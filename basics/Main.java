@@ -36,6 +36,7 @@ public class Main {
     return word + "s";
     }
     return word;
+    
     }
 
     public static String flipNHeads(int n) {
