@@ -1,10 +1,7 @@
 # java-fundamentals
 
-with collaboration:
 
-1. Saed.
-2. Mohammad Khaled Jaradat.
-
-3. Mohammad abdulmajeed Jaradat.
-
-4. Mohammad Abu Mattar.
+|#|Subject|Link|
+|-----|--------|--------|
+|1   |lab01|[link](./basics/Main.java)|
+|2   |lab01|[link](./basicslibrary/app/src/main/java/App.java)|
