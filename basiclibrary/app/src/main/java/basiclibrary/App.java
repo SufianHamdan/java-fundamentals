@@ -15,31 +15,22 @@ import java.util.Set;
 
 public class App {
     public static void main(String[] args) {
-        // int[] dices = roll(6);
-        // for (int i = 0; i < dices.length; i++) {
-        // System.out.println(dices[i]);
-        // }
-        // System.out.println(containsDuplicates(dices));
-        // System.out.println(calculatingAverages(dices));
-        // int[][] weeklyMonthTemperatures = {
-        // {66, 64, 58, 65, 71, 57, 60},
-        // {57, 65, 65, 70, 72, 65, 51},
-        // {55, 54, 60, 53, 59, 57, 61},
-        // {65, 56, 55, 52, 55, 62, 57}
-        // };
-        // int[] mainArr = arraysOfArrays(weeklyMonthTemperatures);
-        // for (int i = 0; i < mainArr.length; i++) {
-        // System.out.println(mainArr[i]);
-        // }
-
+        int[] dices = roll(6);
+        for (int i = 0; i < dices.length; i++) {
+            System.out.println(dices[i]);
+        }
+        containsDuplicates(dices);
+        calculatingAverages(dices);
+        System.out.println(containsDuplicates(dices));
+        System.out.println(calculatingAverages(dices));
+       
         // LAB 03 --- Weekly Month Temperatures
 
         int[][] weeklyMonthTemperatures = { { 66, 64, 58, 65, 71, 57, 60 }, { 57, 65, 65, 70, 72, 65, 51 },
                 { 55, 54, 60, 53, 59, 57, 61 }, { 65, 56, 55, 52, 55, 62, 57 } };
         weather(weeklyMonthTemperatures);
 
-
-        // Lab03 --- most votes. 
+        // Lab03 --- most votes.
         List<String> votes = new ArrayList<>();
         votes.add("Bush");
         votes.add("Bush");
@@ -52,7 +43,7 @@ public class App {
         votes.add("Bush");
 
         tally(votes);
-       
+
     }
 
     public static void weather(int[][] arr) {
@@ -94,13 +85,10 @@ public class App {
                 System.out.println("Never saw temperature: " + i);
             }
         }
-
-        // System.out.println(uniqueTemp);
-        // System.out.println("This is the length of the hashSet " + uniqueTemp.size());
     }
 
     // creating the tally function
-    public static void tally(List<String> votes){
+    public static void tally(List<String> votes) {
         // declear a string value to give it the name with highest votes
         String winner = "";
 
@@ -115,35 +103,61 @@ public class App {
 
             int highiestVotesNumber = Collections.frequency(votes, vote);
 
-            if(highiestVotesNumber > temp){
+            if (highiestVotesNumber > temp) {
                 temp = highiestVotesNumber;
                 winner = vote;
             }
         }
 
-        System.out.println( winner + " received the most votes!");
+        System.out.println(winner + " received the most votes!");
     }
 
-    /*
-     * public static int[] roll(int num) { int[] dice = new int[num]; for (int i =
-     * 0; i < num; i++) { int random = 1 + (int) (Math.random() * 6); dice[i] =
-     * random; } return dice; }
-     */
-    /*
-     * public static boolean containsDuplicates(int[] arr) { for (int i = 0; i <
-     * arr.length; i++) { for (int j = 0; j < arr.length; j++) { if (i != j) { if
-     * (arr[i] == arr[j]) { return true; } } } } return false; }
-     */
-    /*
-     * public static double calculatingAverages(int[] arr) { int sum = 0; for (int i
-     * = 0; i < arr.length; i++) { sum += arr[i]; } double avg = sum / (arr.length);
-     * return avg; }
-     */
-    /*
-     * public static int[] arraysOfArrays(int[][] arr) { int[] tempArr = new
-     * int[arr[0].length]; int sum = 0; int temp = 2147483647; for (int i = 0; i <
-     * arr.length; i++) { for (int j = 0; j < arr[i].length; j++) { sum +=
-     * arr[i][j]; } if (sum < temp) { for (int j = 0; j < arr[i].length; j++) {
-     * tempArr[j] = arr[i][j]; } } } return tempArr; }
-     */
+    public static int[] roll(int num) {
+        int[] dice = new int[num];
+        for (int i = 0; i < num; i++) {
+            int random = 1 + (int) (Math.random() * 6);
+            dice[i] = random;
+        }
+        return dice;
+    }
+
+    public static boolean containsDuplicates(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j) {
+                    if (arr[i] == arr[j]) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static double calculatingAverages(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        double avg = sum / (arr.length);
+        return avg;
+    }
+
+    public static int[] arraysOfArrays(int[][] arr) {
+        int[] tempArr = new int[arr[0].length];
+        int sum = 0;
+        int temp = 2147483647;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
+            }
+            if (sum < temp) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    tempArr[j] = arr[i][j];
+                }
+            }
+        }
+        return tempArr;
+    }
+
 }
