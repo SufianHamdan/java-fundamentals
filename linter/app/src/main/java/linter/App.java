@@ -5,51 +5,36 @@
 package linter;
 
 import java.io.*;
-import java.io.InputStream;
-import java.io.IOException;
-import java.util.regex.Pattern;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class App {
 
-    public static void main(String[] args) throws IOException {
-
-        String textLine = "";
-
-        File file = new File("/home/sufianhamdan/java-fundamentals/linter/app/src/main/resources/gates.js");
-        FileInputStream fis = null;
-        String allContent = "";
-        try {
-            fis = new FileInputStream(file);
-            System.out.println("Total file size to read (in bytes): " + fis.available());
-            int content;
-            while ((content = fis.read()) != -1) {
-                // System.out.print((char) content);
-                textLine += (char) content;
-                String eachLine = textLine;
-
+    public static void main(String[] args) {
+        readingFile("/home/mkabumattar/amman-code-java-401d2/java-fundamentals/MissingSemicolon/app/src/main/java/MissingSemicolon/gates.js");
+      }
+      public static void readingFile(String path) {
+        Path file = Paths.get(path);
+        try (InputStream in = Files.newInputStream(file);
+             BufferedReader readerFile = new BufferedReader(new InputStreamReader(in))) {
+          String textLine;
+          for (int i = 1;(textLine = readerFile.readLine()) != null; i++) {
+            if (!textLine.endsWith(";")) {
+              if (!textLine.endsWith("{")) {
+                if (!textLine.endsWith("}")) {
+                  if (!textLine.contains("if")) {
+                    if (!textLine.contains("else")) {
+                      System.out.println("Missing Semicolon at Line: " + i);
+                    }
+                  }
+                }
+              }
             }
-
-            // String text = "This is the text to be searched " + "for occurrences of the pattern.";
-
-            String pattern = "(?:L of .*?)(?:\\n|$)";
-
-            boolean matches = Pattern.matches(pattern, textLine);
-            System.out.println(textLine);
-
-            System.out.println("matches = " + matches);
-            // System.out.print(allContent);
-            // Pattern patternL = Pattern.compile("(?:L of .*?)(?:\\n|$)",
-            // Pattern.eachLine);
-            System.out.print(allContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fis != null)
-                    fis.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+          }
+        } catch (IOException err) {
+          System.err.println(err);
         }
-    }
+      }
 }
