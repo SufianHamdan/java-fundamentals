@@ -18,3 +18,24 @@ the other constructor to add review to a specific restaurant (it will accept an 
 [RestaurantClass](./lib/src/main/java/inheritance/Restaurant.java)
 [ReviewClass](./lib/src/main/java/inheritance/Review.java)
 [MainClass](./lib/src/main/java/inheritance/Main.java)
+
+
+## Second Lab 
+
+i renamed the blueprint to be for all (restaurant, shop, theater)
+
+shop class is the same as restaurant class 
+
+theater class :
+i created new linkedlist for movies to be added by the user and the rest is the same
+
+Review class :
+i added one constructors for shop that will accept an object of type shop
+and also added 2 constructors one to accept theater object and another theater object with movie name
+
+if the user want to review a movie he should create a theater object 
+then create a review object to pass in the theater object and movie name so it will be specific to which theater and what movie
+
+[ShopClass](./lib/src/main/java/inheritance/Shop.java)
+[TheaterClass](./lib/src/main/java/inheritance/Theater.java)
+

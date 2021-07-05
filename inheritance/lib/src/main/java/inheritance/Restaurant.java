@@ -2,7 +2,8 @@ package inheritance;
 
 import java.util.LinkedList;
 
-public class Restaurant implements bluePrintForResturants{
+public class Restaurant implements bluePrintForThisExample {
+
     private String name;
     private int priceCategory;
     private LinkedList<Review> reviews; // creating linked list of type Review

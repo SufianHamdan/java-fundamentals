@@ -3,16 +3,19 @@ package inheritance;
 public class Review{
 
     String body;
-    String auther;
+    String author;
     int stars;
     Restaurant restaurant; // this is an object of type Restaurant
+    private Shop shop; // creating an object of type Shop
+    private Theater theater; // creating an object of type Theater
+    String movieName;
 
     /*
         normal constructor to add user review
      */
-    public Review(String body, String auther, int stars) {
+    public Review(String body, String author, int stars) {
         this.body = body;
-        this.auther = auther;
+        this.author = author;
         this.stars = stars;
     }
 
@@ -20,12 +23,46 @@ public class Review{
         constructor to add a review to specific restaurant
         the user must pass the restaurant object and the rest of the values
      */
-    public Review(Restaurant restaurant, String body, String auther, int stars) {
+    public Review(Restaurant restaurant, String body, String author, int stars) {
         this.body = body;
-        this.auther = auther;
+        this.author = author;
         this.stars = stars;
         this.restaurant = restaurant;
     }
+
+    /*
+       constructor to add a review to specific shop
+       the user must pass the shop object and the rest of the values
+    */
+    public Review(Shop shop, String body, String author, int stars) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        this.shop = shop;
+    }
+
+    /*
+       constructor to add a review to specific Theater
+       the user must pass the Theater object and the rest of the values
+    */
+    public Review(Theater theater, String body, String author, int stars) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        this.theater = theater;
+    }
+
+    /*
+       this constructor same as above but with name of the movie added
+    */
+    public Review(Theater theater,String movieName, String body, String author, int stars) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        this.theater = theater;
+        this.movieName = movieName;
+    }
+
 
 
 
@@ -38,35 +75,46 @@ public class Review{
     }
 
     public String getAuther() {
-        return auther;
+        return author;
     }
 
     public void setAuther(String auther) {
-        this.auther = auther;
+        this.author = auther;
     }
 
     public int getStars() {
         return stars;
     }
 
-    public void setStars(int stars) {
+    public String getMovieName() {
+        return movieName;
+    }
 
-        if(stars <= 5 && stars >= 0){
-            this.stars = stars;
 
-        }else{
-            System.out.println("The stars should be between 0 - 5");
+
+    /*
+        this function convert stars number into star symbol
+     */
+    public String updatingStars(){
+        String starSymbol = "";
+        for(int i = 0; i < this.stars; i++){
+            starSymbol += "*";
         }
+        return starSymbol;
+    }
 
+    public String movieName(){
+        String print;
+        if(movieName == null){
+            print = ".";
+        }else{
+            print = "Movie Name: " + movieName + ".";
+        }
+        return print;
     }
 
     @Override
     public String toString() {
-        return "Review{" +
-                restaurant +
-                ", body='" + body + '\'' +
-                ", auther='" + auther + '\'' +
-                ", stars=" + stars +
-                '}';
+        return "Author: " + author + ", Feedback: " + body + ", Stars: " + this.updatingStars() +", " + movieName();
     }
 }
