@@ -1,16 +1,17 @@
 package inheritance;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Theater implements bluePrintForThisExample {
     private String name;
-    private LinkedList<String> movie;
-    private LinkedList<Review> reviews;
+    private ArrayList<String> movie;
+    private ArrayList<Review> reviews;
 
     public Theater(String name) {
         this.name = name;
-        this.movie = new LinkedList<>();
-        this.reviews = new LinkedList<>();
+        this.movie = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
 
@@ -22,15 +23,18 @@ public class Theater implements bluePrintForThisExample {
         this.name = name;
     }
 
-    public LinkedList<String> getMovie() {
+    public ArrayList<String> getMovie() {
         return movie;
     }
-    public LinkedList<Review> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
     public void addMovie(String movieName){
         movie.add(movieName);
+    }
+    public void removeMovie(String movieName){
+        movie.remove(movieName);
     }
 
     /*

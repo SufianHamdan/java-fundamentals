@@ -9,6 +9,6 @@ public interface bluePrintForThisExample {
         Declaring our functions for each Restaurant
      */
 
-    String toString();
+//    String toString();
     void addReview(Review review);
 }

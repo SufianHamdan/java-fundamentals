@@ -1,5 +1,6 @@
 package inheritance;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 /*
     cuz the shop has the same functionality as restaurant we implemented the same interface and
@@ -10,13 +11,13 @@ public class Shop implements bluePrintForThisExample {
     private String name;
     private String description;
     private int priceCategory;
-    private LinkedList<Review> reviews;
+    private ArrayList<Review> reviews;
 
     public Shop(String name, String description, int priceCategory){
         this.name = name;
         this.description = description;
         this.priceCategory = priceCategory;
-        this.reviews = new LinkedList<>();
+        this.reviews = new ArrayList<>();
     }
 
 
@@ -25,7 +26,7 @@ public class Shop implements bluePrintForThisExample {
         this.reviews.add(review);
     }
 
-    public LinkedList<Review> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
@@ -76,5 +77,19 @@ public class Shop implements bluePrintForThisExample {
             sign = sign + "$";
         }
         return sign;
+    }
+
+    /*
+        This function calculate the review stars and give the Shop the star rate
+     */
+    private float calcRestauranteStars(){
+        float sum = 0;
+        for (Review review: reviews){
+            sum += review.stars;
+        }
+        if(sum > 0){
+            return sum / reviews.size();
+        }
+        return 0;
     }
 }

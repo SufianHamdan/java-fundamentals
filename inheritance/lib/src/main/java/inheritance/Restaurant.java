@@ -1,12 +1,13 @@
 package inheritance;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Restaurant implements bluePrintForThisExample {
 
     private String name;
     private int priceCategory;
-    private LinkedList<Review> reviews; // creating linked list of type Review
+    private ArrayList<Review> reviews; // creating Array list of type Review
 
     /*
         Constructor that takes in name and the price
@@ -17,7 +18,7 @@ public class Restaurant implements bluePrintForThisExample {
     public Restaurant (String name, int priceCategory){
         this.name = name;
         this.priceCategory = priceCategory;
-        this.reviews = new LinkedList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public String getName() {
@@ -34,6 +35,20 @@ public class Restaurant implements bluePrintForThisExample {
 
     public void setPriceCategory(int priceCategorey) {
         this.priceCategory = priceCategorey;
+    }
+
+    /*
+        This function calculate the review stars and give the restaurant the star rate
+     */
+    private float calcRestauranteStars(){
+        float sum = 0;
+        for (Review review: reviews){
+            sum += review.stars;
+        }
+        if(sum > 0){
+            return sum / reviews.size();
+        }
+        return 0;
     }
 
     /*
@@ -60,15 +75,24 @@ public class Restaurant implements bluePrintForThisExample {
         reviews.add(review);
     }
 
+    private String printReviews(){
+        String reviewsText = "";
+        for (Review review: reviews){
+            reviewsText += review + "\n";
+        }
+        return reviewsText;
+    }
+
     /*
-        method to convert data to string so we can call it and print it
+        method to convert data to string so we can call it and print it (This method is from built in toString)
      */
-    @Override
+
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
-                ", priceCategory=" + priceCategory +
-                ", reviews=" + reviews +
+                ", priceCategory=" + this.convertPriceToSign() +
+                ", reviews=" + this.printReviews() +
+                ", Restaurant Stars=" + this.calcRestauranteStars() +
                 '}';
     }
 }
