@@ -13,8 +13,10 @@ import java.nio.file.Paths;
 public class App {
 
     public static void main(String[] args) {
-        readingFile("/home/mkabumattar/amman-code-java-401d2/java-fundamentals/MissingSemicolon/app/src/main/java/MissingSemicolon/gates.js");
+        readingFile("/home/sufianhamdan/java-fundamentals/linter/app/src/main/resources/gates.js");
+
       }
+
       public static void readingFile(String path) {
         Path file = Paths.get(path);
         try (InputStream in = Files.newInputStream(file);
